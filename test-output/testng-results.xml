@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-01-14T15:57:34Z" name="Default suite" finished-at="2022-01-14T15:57:35Z" duration-ms="1497">
+  <suite started-at="2022-01-14T21:31:46Z" name="Default suite" finished-at="2022-01-14T21:31:48Z" duration-ms="2238">
     <groups>
     </groups>
-    <test started-at="2022-01-14T15:57:34Z" name="Default test" finished-at="2022-01-14T15:57:35Z" duration-ms="1497">
-      <class name="tests.JDBC">
-        <test-method signature="dataBaseTest()[pri:0, instance:tests.JDBC@49e5f737]" started-at="2022-01-14T15:57:34Z" name="dataBaseTest" finished-at="2022-01-14T15:57:35Z" duration-ms="1476" status="PASS">
+    <test started-at="2022-01-14T21:31:46Z" name="Default test" finished-at="2022-01-14T21:31:48Z" duration-ms="2238">
+      <class name="tests.ComplexJson">
+        <test-method signature="ParseComplexJson()[pri:0, instance:tests.ComplexJson@68e5eea7]" started-at="2022-01-14T21:31:46Z" name="ParseComplexJson" finished-at="2022-01-14T21:31:48Z" duration-ms="2008" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- dataBaseTest -->
-      </class> <!-- tests.JDBC -->
+        </test-method> <!-- ParseComplexJson -->
+        <test-method signature="parseCopies()[pri:0, instance:tests.ComplexJson@68e5eea7]" started-at="2022-01-14T21:31:48Z" name="parseCopies" finished-at="2022-01-14T21:31:48Z" duration-ms="53" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseCopies -->
+        <test-method signature="sumValidation()[pri:0, instance:tests.ComplexJson@68e5eea7]" started-at="2022-01-14T21:31:48Z" name="sumValidation" finished-at="2022-01-14T21:31:48Z" duration-ms="156" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- sumValidation -->
+      </class> <!-- tests.ComplexJson -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
