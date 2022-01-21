@@ -11,6 +11,17 @@ import org.testng.annotations.Test;
 
 import files.PayLoad;
 
+
+/*
+ * This is a basic test that obeys the following pattern:
+ * given -All input details
+ * when  - submit the API -resource, http method
+ * Then  -Validate the response
+ * There is a way to send the Json body from a file in the computer with a method that converts the file into bytes
+ * The ways it is done=> Files.readAllBytes(Paths.get()) 
+ */
+
+
 public class BasicTest {
 	String response;
 	String placeID;
