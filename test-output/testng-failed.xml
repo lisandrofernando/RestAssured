@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.JDBC">
+      <class name="tests.JiraCookiesAuth">
         <methods>
-          <include name="dataBaseTest"/>
+          <include name="jiraAuthentication"/>
         </methods>
-      </class> <!-- tests.JDBC -->
+      </class> <!-- tests.JiraCookiesAuth -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

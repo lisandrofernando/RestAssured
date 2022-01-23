@@ -43,4 +43,9 @@ public class PayLoad {
 				+ "";
 		return payLoad;
 	}
+	
+	public static String jiraCookieAuth(String user, String pass) {
+		
+		return "{\"username\": \""+user+"\", \"password\": \""+pass+"\"}";
+	}
 }
