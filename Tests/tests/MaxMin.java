@@ -34,9 +34,7 @@ public class MaxMin {
 		
 		for(int i=0; i<a.length; i++) {
 			
-			if(i==0) 
-				maxNum = minNum = a[i];
-			else if (a[i]>maxNum)
+			 if (a[i]>maxNum)
 				maxNum = a[i];
 			else if (a[i]<minNum)
 				minNum = a[i];

@@ -21,6 +21,10 @@ import files.URI;
  * There is a way to send the Json body from a file in the computer with a method that converts the file into bytes
  * The ways it is done=> Files.readAllBytes(Paths.get()) 
  * Jira is a software management tool which many companies use to track their project.
+ * HTTP response status codes are: Information Responses:100 continue, 101 Switching Protocols, 102 Processing, 103 Early Hints
+ * Successful responses 200 OK, 201 Created, Redirections: 300 Multiple Choice, 301 moved permanently
+ * Client Error Responses: 400 Bad Request, 401 Unauthorized, 403 forbidden, 404 Not Found
+ * Server error responses: 500 Internal server error, 502 Bad Gateway, 504 Gateway Timeout 
  */
 
 
