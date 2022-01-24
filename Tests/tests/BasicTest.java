@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import files.PayLoad;
+import files.URI;
 
 
 /*
@@ -32,8 +33,7 @@ public class BasicTest {
 @Test	
  public void firstTest() {
 	 
-	 
-	RestAssured.baseURI= "https://rahulshettyacademy.com";
+	URI.uri();
 	 response =  given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
 	 .body(PayLoad.AddPlace()).when().post("maps/api/place/add/json").then().log().all().assertThat().statusCode(200)
 	 .body("scope", equalTo("APP")).extract().response().asString();
@@ -45,7 +45,7 @@ public class BasicTest {
    }
 @Test
  public void updateTest() {
-	 RestAssured.baseURI= "https://rahulshettyacademy.com";
+	 URI.uri();
 	getPlaceResponse =   given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
 	 .body("{\n"
 	 		+ "\"place_id\":\""+placeID+"\",\n"
@@ -61,7 +61,7 @@ public class BasicTest {
   }
 @Test
 public void getPlace() {
-	RestAssured.baseURI= "https://rahulshettyacademy.com";
+	URI.uri();
 	 getPlaceResponse =  given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID)
 	 .when().get("maps/api/place/get/json").then().log().all().assertThat().statusCode(200)
 	 .extract().response().asString();

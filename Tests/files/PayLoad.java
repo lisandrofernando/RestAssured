@@ -48,4 +48,29 @@ public class PayLoad {
 		
 		return "{\"username\": \""+user+"\", \"password\": \""+pass+"\"}";
 	}
+	public static String createIssueJira(String summary, String description) {
+		
+		return "{\n"
+				+ "    \"fields\": {\n"
+				+ "        \"project\": {\n"
+				+ "          \"key\": \"PRAC\"\n"
+				+ "        },\n"
+				+ "        \"summary\": \""+summary+"\",\n"
+				+ "        \"description\":\""+description+"\",\n"
+				+ "        \"issuetype\": {\n"
+				+ "            \"name\": \"Bug\"\n"
+				+ "        }\n"
+				+ "    }\n"
+				+ "}";
+	}
+	public static String addCommentJira(String comment) {
+		
+		return "{\n"
+				+ "    \"body\": \""+comment+"\",\n"
+				+ "    \"visibility\": {\n"
+				+ "        \"type\": \"role\",\n"
+				+ "        \"value\": \"Administrators\"\n"
+				+ "    }\n"
+				+ "}";
+	}
 }
