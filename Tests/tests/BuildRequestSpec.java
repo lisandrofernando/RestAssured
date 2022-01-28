@@ -2,8 +2,12 @@ package tests;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
@@ -37,8 +41,8 @@ import files.URI;
  * State transition Techniques and Equivalence Partitioning. 
  */
 
-public class BasicTest {
-	String response;
+public class BuildRequestSpec {
+	
 	String placeID;
 	String newAddress="Paseo Ecatepec 514-A, Mexico";
 	String getPlaceResponse;
@@ -46,19 +50,19 @@ public class BasicTest {
 @Test	
  public void postTest() {
 	
+	RequestSpecification req = new RequestSpecBuilder().setBaseUri(URI.uri()).addQueryParam("key", "qaclick123").setContentType(ContentType.JSON).build();
 	
+	ResponseSpecification resspec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 	
-	URI.uri();
-	 response =  given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
-	 .body(PayLoad.AddPlace()).when().post("maps/api/place/add/json").then().log().all().assertThat().statusCode(200)
-	 .body("scope", equalTo("APP")).extract().response().asString();
-	
-	JsonPath js = new JsonPath(response);
-  placeID=js.getString("place_id");
-	System.out.println(placeID);
+	RequestSpecification res = given().spec(req)
+	 .body(PayLoad.AddPlace());
+	 Response response = res.when().post("maps/api/place/add/json").then().spec(resspec)
+	.extract().response();
+	String responseString = response.asString();
+      System.out.println(responseString);
 	
    }
-@Test
+//@Test
  public void updateTest() {
 	 URI.uri();
 	getPlaceResponse =   given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
@@ -74,7 +78,7 @@ public class BasicTest {
 		 //Assert.assertEquals(actualAddress, newAddress);
 	
   }
-@Test
+//@Test
 public void getPlace() {
 	URI.uri();
 	 getPlaceResponse =  given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID)
