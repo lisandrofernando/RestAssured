@@ -56,30 +56,18 @@ public class BasicTest {
 	JsonPath js = new JsonPath(response);
   placeID=js.getString("place_id");
 	System.out.println(placeID);
-	
-   }
-@Test
- public void updateTest() {
-	 URI.uri();
-	getPlaceResponse =   given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
-	 .body("{\n"
-	 		+ "\"place_id\":\""+placeID+"\",\n"
-	 		+ "\"address\":\""+newAddress+"\",\n"
-	 		+ "\"key\":\"qaclick123\"\n"
-	 		+ "}").when().put("maps/api/place/update/json").then().log().all().assertThat().statusCode(200)
+
+
+	String getUpdateResponse =   given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
+	 .body(PayLoad.UpadatePlace(placeID, newAddress)).when().put("maps/api/place/update/json").then().log().all().assertThat().statusCode(200)
 	 .body("msg", equalTo("Address successfully updated")).extract().response().asString();
-	   JsonPath js = new JsonPath(getPlaceResponse);
-		 String actualAddress = js.getString("address");
-		 System.out.println(actualAddress);	
+	   JsonPath jsi = new JsonPath(getUpdateResponse);
+		 String updatedAddress = jsi.getString("address");
+		 System.out.println("The updated response is here:  "+ updatedAddress);	
 		 //Assert.assertEquals(actualAddress, newAddress);
-	
-  }
-@Test
-public void getPlace() {
-	URI.uri();
-	 getPlaceResponse =  given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID)
-	 .when().get("maps/api/place/get/json").then().log().all().assertThat().statusCode(200)
-	 .extract().response().asString();
-	
+
+		 getPlaceResponse =  given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID)
+				 .when().get("maps/api/place/get/json").then().log().all().assertThat().statusCode(200)
+				 .extract().response().asString();
   }
 }

@@ -23,11 +23,11 @@ public class PayLoad {
 				+ "}";
 	}
 	
-	public static String UpadatePlace() {
+	public static String UpadatePlace(String placeID, String Address) {
 		
 		return "{\n"
 				+ "\"place_id\":\""+placeID+"\",\n"
-				+ "\"address\":\"70 Summer walk, USA\",\n"
+				+ "\"address\":\""+Address+"\",\n"
 				+ "\"key\":\"qaclick123\"\n"
 				+ "}";
 	}

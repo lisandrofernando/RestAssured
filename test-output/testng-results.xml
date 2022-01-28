@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-01-28T14:20:56 CST" name="Default suite" finished-at="2022-01-28T14:21:02 CST" duration-ms="5114">
+  <suite started-at="2022-01-28T17:14:21 CST" name="Default suite" finished-at="2022-01-28T17:14:35 CST" duration-ms="13760">
     <groups>
     </groups>
-    <test started-at="2022-01-28T14:20:56 CST" name="Default test" finished-at="2022-01-28T14:21:02 CST" duration-ms="5114">
-      <class name="tests.BuildRequestSpec">
-        <test-method signature="postTest()[pri:0, instance:tests.BuildRequestSpec@696da30b]" started-at="2022-01-28T14:20:56 CST" name="postTest" finished-at="2022-01-28T14:21:02 CST" duration-ms="5078" status="PASS">
+    <test started-at="2022-01-28T17:14:21 CST" name="Default test" finished-at="2022-01-28T17:14:35 CST" duration-ms="13760">
+      <class name="tests.BasicTest">
+        <test-method signature="postTest()[pri:0, instance:tests.BasicTest@72cde7cc]" started-at="2022-01-28T17:14:21 CST" name="postTest" finished-at="2022-01-28T17:14:35 CST" duration-ms="13716" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postTest -->
-      </class> <!-- tests.BuildRequestSpec -->
+      </class> <!-- tests.BasicTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
