@@ -24,6 +24,7 @@ public class AddStepDefinion extends Utils {
 
 	static RequestSpecification res;
 	static Response response;
+	static String placeID;
     TestData data = new TestData();
     @Given("^Add Place Payload with \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
     public void add_place_payload_with_something_something_something(String name, String language, String address) throws Throwable {
@@ -59,10 +60,15 @@ public class AddStepDefinion extends Utils {
 	  @And("^verify placeID created maps to \"([^\"]*)\" using \"([^\"]*)\"$")
 	    public void verify_placeid_created_maps_to_something_using_something(String expectedName, String resource) throws Throwable {
 		  
-		  String placeID =  getJsonPath(response,"place_id");
+		   placeID =  getJsonPath(response,"place_id");
 		  res = given().spec(RequestSpecification()).queryParam("place_id", placeID);
 		  stepDefinitions.AddStepDefinion.user_calls_something_with_something_http_request(resource, "GET");
 		  String actualName =  getJsonPath(response,"name");
 		  assertEquals(actualName,expectedName);
+	    }
+	  
+	    @Given("^DeletePlace payload$")
+	    public void deleteplace_payload() throws Throwable {
+	      res= given().spec(RequestSpecification()).body(data.deletePlacePayload(placeID));
 	    }
 }

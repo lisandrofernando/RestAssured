@@ -28,4 +28,9 @@ public class TestData {
 		
 		return pojo;
 	}
+	public String deletePlacePayload(String placeID) {
+		return "{\n"
+				+ "    \"place_id\":\""+placeID+"\"\n"
+				+ "}";
+	}
 }
