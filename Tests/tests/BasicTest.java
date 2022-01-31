@@ -38,7 +38,7 @@ import files.URI;
 
 public class BasicTest {
 	String response;
-	String placeID;
+    String placeID;
 	String newAddress = "San Pedro Area";
 	String getPlaceResponse;
 
@@ -53,7 +53,21 @@ public class BasicTest {
 		JsonPath js = new JsonPath(response);
 		placeID = js.getString("place_id");
 		System.out.println(placeID);
+	}
+	
+	
+	//@Test
+	   public void getTest() {
+		  URI.uri();
+			getPlaceResponse = given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID).when()
+					.get("maps/api/place/get/json").then().log().all().assertThat().statusCode(200).extract().response()
+					.asString();
+			System.out.println("The GET Response is: "+getPlaceResponse);
 
+		}
+  @Test	
+  public void updateTest() {
+	  URI.uri();
 		String getUpdateResponse = given().log().all().queryParam("key", "qaclick123")
 				.header("Content-Type", "application/json").body(PayLoad.UpadatePlace(placeID, newAddress)).when()
 				.put("maps/api/place/update/json").then().log().all().assertThat().statusCode(200)
@@ -62,9 +76,6 @@ public class BasicTest {
 		String updatedAddress = jsi.getString("address");
 		System.out.println("The updated response is here:  " + updatedAddress);
 		// Assert.assertEquals(updatedAddress, newAddress);
-
-		getPlaceResponse = given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID).when()
-				.get("maps/api/place/get/json").then().log().all().assertThat().statusCode(200).extract().response()
-				.asString();
-	}
+}
+  
 }
