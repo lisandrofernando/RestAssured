@@ -5,6 +5,8 @@
     <classes>
       <class name="tests.BasicTest">
         <methods>
+          <include name="updateTest"/>
+          <include name="postTest"/>
           <include name="getTest"/>
         </methods>
       </class> <!-- tests.BasicTest -->

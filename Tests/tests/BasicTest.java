@@ -9,6 +9,8 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import files.PayLoad;
@@ -37,12 +39,12 @@ import files.URI;
  */
 
 public class BasicTest {
-	String response;
-    String placeID;
-	String newAddress = "San Pedro Area";
-	String getPlaceResponse;
+	static String response;
+    static String placeID;
+	static String Address = "San Pedro Area";
+	static String getPlaceResponse;
 
-	@Test
+	@BeforeTest
 	public void postTest() {
 
 		URI.uri();
@@ -56,26 +58,26 @@ public class BasicTest {
 	}
 	
 	
-	//@Test
+	@AfterTest
 	   public void getTest() {
 		  URI.uri();
-			getPlaceResponse = given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID).when()
+			response = given().log().all().queryParam("key", "qaclick123").queryParam("place_id", placeID).when()
 					.get("maps/api/place/get/json").then().log().all().assertThat().statusCode(200).extract().response()
 					.asString();
-			System.out.println("The GET Response is: "+getPlaceResponse);
+			System.out.println("The GET Response is: "+response);
 
 		}
   @Test	
   public void updateTest() {
 	  URI.uri();
 		String getUpdateResponse = given().log().all().queryParam("key", "qaclick123")
-				.header("Content-Type", "application/json").body(PayLoad.UpadatePlace(placeID, newAddress)).when()
+				.header("Content-Type", "application/json").body(PayLoad.UpadatePlace(placeID, Address)).when()
 				.put("maps/api/place/update/json").then().log().all().assertThat().statusCode(200)
 				.body("msg", equalTo("Address successfully updated")).extract().response().asString();
 		JsonPath jsi = new JsonPath(getUpdateResponse);
 		String updatedAddress = jsi.getString("address");
 		System.out.println("The updated response is here:  " + updatedAddress);
-		// Assert.assertEquals(updatedAddress, newAddress);
+	    //Assert.assertEquals(updatedAddress, Address);
 }
   
 }
