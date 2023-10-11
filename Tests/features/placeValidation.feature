@@ -1,5 +1,7 @@
 Feature: Validating Place API's
 
+# This is a feature file
+
 
 @AddPlace
 Scenario Outline: Verify if Place is added successfully using addPlace API

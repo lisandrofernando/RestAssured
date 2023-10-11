@@ -25,6 +25,20 @@ package tests;
 		  System.out.println(result.getString("id"));
 		  }
 		  
+		  con.close();
+		}
+		
+		@Test
+		public void dataBaseTestOne() throws SQLException {
+			
+		  Connection con = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/word","root","Lisandro100@");
+		  Statement s =      con.createStatement();
+		  ResultSet result =   s.executeQuery("select * from CustomerInfo");
+		  while(result.next()) {
+		  System.out.println(result.getString("firstName"));
+		  System.out.println(result.getString("gender"));
+		  }
+		  con.close();
 		}
 	}
 

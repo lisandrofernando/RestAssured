@@ -12,8 +12,8 @@ public class URI {
 	
 	public static String jiraURI() {
 		
-		String url = RestAssured.baseURI= "http://localhost:8080";
-		return url;
+		return "http://localhost:8080";
+	
 	}
 
 }
