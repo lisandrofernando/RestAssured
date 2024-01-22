@@ -3,6 +3,8 @@ package resources;
 /*
  * Enum is a special class in java which has a collections of methods or constants
  * The constructor will be called with value of resource which you pass
+ * //tagName[@attributeName="attributeValue"]
+ * //a[text()='value']
  */
 public enum APIResources {
 

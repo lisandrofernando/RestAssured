@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import files.PayLoad;
+import files.ReUsableMethods;
 import files.URI;
 
 /*
@@ -36,6 +37,8 @@ import files.URI;
  * Deserialization by converting Response body back to Java object
  * Test case design techniques are: Error Guessing, Boundary value Analysis, Decision Table Techniques
  * State transition Techniques and Equivalence Partitioning. 
+ * GraphQL in a practical sense can avoid over feching or under feching and performance issues in the application. GraphQL is a query language
+ * and server-side runtime to fulfill those queries on your existing data. In GraphQL there are three things to understand: Types. 
  */
 
 public class BasicTest {
@@ -52,7 +55,7 @@ public class BasicTest {
 				.body(PayLoad.AddPlace()).when().post("maps/api/place/add/json").then().log().all().assertThat()
 				.statusCode(200).body("scope", equalTo("APP")).extract().response().asString();
 
-		JsonPath js = new JsonPath(response);
+		JsonPath js = ReUsableMethods.rowToJson(response);
 		placeID = js.getString("place_id");
 		System.out.println(placeID);
 	}
@@ -74,7 +77,7 @@ public class BasicTest {
 				.header("Content-Type", "application/json").body(PayLoad.UpadatePlace(placeID, Address)).when()
 				.put("maps/api/place/update/json").then().log().all().assertThat().statusCode(200)
 				.body("msg", equalTo("Address successfully updated")).extract().response().asString();
-		JsonPath jsi = new JsonPath(getUpdateResponse);
+		JsonPath jsi = ReUsableMethods.rowToJson(getUpdateResponse);
 		String updatedAddress = jsi.getString("address");
 		System.out.println("The updated response is here:  " + updatedAddress);
 	    //Assert.assertEquals(updatedAddress, Address);

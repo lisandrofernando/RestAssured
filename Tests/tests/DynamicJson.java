@@ -4,6 +4,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import files.PayLoad;
+import files.URI;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 
@@ -20,7 +21,7 @@ public class DynamicJson {
 	@Test(dataProvider="MyBooks")
 	public void addBook(String isbn, String aisle) {
 		
-		RestAssured.baseURI ="http://216.10.245.166";
+		URI.BookStoreURL();
 		
 	String response =	given().log().all().header("Content-Type","application/json")
 		.body(PayLoad.addBook(isbn,aisle))
