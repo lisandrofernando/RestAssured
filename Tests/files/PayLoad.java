@@ -73,4 +73,12 @@ public class PayLoad {
 				+ "    }\n"
 				+ "}";
 	}
+
+	public static String ResPayload(){
+
+		return "{\n" + //
+				"    \"name\": \"morpheus\",\n" + //
+				"    \"job\": \"leader\"\n" + //
+				"}";
+	}
 }
