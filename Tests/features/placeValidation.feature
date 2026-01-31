@@ -16,7 +16,7 @@ Examples:
       | name           | language | address           |
       | Ecatepec House | english  | Colonia Ecatepec  |
       |San Pedro House | Spanish  | Colonia San Pedro |
-      |CDMX House     | Spanish  | Colonia CDMX       |
+      
       
       
       
